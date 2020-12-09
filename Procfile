@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run fallguys/app.py
+web: sh setup.sh && sh -c 'cd ./fallguys/ && streamlit run app.py'
