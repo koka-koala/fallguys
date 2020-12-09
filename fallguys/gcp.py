@@ -6,7 +6,6 @@ import tensorflow as tf
 
 from google.cloud import storage
 from google.oauth2 import service_account
-from termcolor import colored
 from fallguys.params import BUCKET_NAME, PROJECT_ID,\
     MODEL_NAME, MODEL_VERSION, BUCKET_X_DATA_PATH, BUCKET_y_DATA_PATH
 
