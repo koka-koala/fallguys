@@ -4,7 +4,7 @@ import random
 import streamlit as st
 import pandas as pd
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from PIL import Image
 from pathlib import Path
 
@@ -162,7 +162,7 @@ Team Members:""")
 st.markdown(
 """
 - Miri
-    - I am cool dude
+    - I am cool cat lady
     - Connect with me here
 """)
 miri_image = Image.open('images/miri.jpg')
@@ -173,7 +173,7 @@ st.image(miri_image,
 st.markdown(
 """
 - Jin
-    - I am cool dude
+    - I fall for you.
     - Connect with me here
 """)
 jin_image = Image.open('images/jin.jpg')
