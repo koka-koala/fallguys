@@ -28,7 +28,7 @@ def download_model(model_version=MODEL_VERSION, bucket=BUCKET_NAME, rm=True):
         'model.joblib')
     blob = client.blob(storage_location)
     blob.download_to_filename('model.joblib')
-    print(f"=> pipeline downloaded from storage")
+    print(f"=> model downloaded from storage")
     model = joblib.load('model.joblib')
     if rm:
         os.remove('model.joblib')
