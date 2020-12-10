@@ -67,7 +67,6 @@ st.image(image,
         )
 
 
-
 ### OUR SOLUTION ###
 st.markdown("---")
 st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>PROBLEM</h1>", unsafe_allow_html=True)
@@ -116,8 +115,10 @@ st.image(process,
         use_column_width=True,
         unsafe_allow_html=True,
         )
-
-
+st.markdown(
+    """
+    The aim is for the algorithm to continuosly track our users' every day activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
+    """)
 ### ZETEOH ###
 st.markdown("---")
 st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>DATA</h1>", unsafe_allow_html=True)
@@ -125,8 +126,9 @@ st.markdown(
 
 """
 
-- We partnered with Zeteoh, a japanese company that offers options for augmented data hub to it's clients
-- Detecting physical activities through smartphones
+- Our solution relies on accelerometer sensor data, collected by smartphones.
+- Most smartphones contain built-in accelerometers and can support apps with its data.
+- We partnered with Zeteoh, a Japanese company that ... has a product that detects physical activities through smartphones
 """)
 
 st.markdown("<a style='color: white' href='https://www.zeteoh.com/'>Website: zeteoh</a>", unsafe_allow_html=True)
@@ -136,78 +138,38 @@ st.image(acceler,
         use_column_width=True,
         unsafe_allow_html=True,
         )
+st.markdown(
 
+"""
+- X, Y and Z axes correspond to the motion of your phone in three-dimensional space.
+""")
 
-eda = 'images/eda.png'
-st.image(eda,
-        use_column_width=True,
-        unsafe_allow_html=True,
-        )
-
-# st.markdown(
-# """
-# ### HOW
-# -
-# - Falling data
-#     - We used falling data to expand their product and identify falling pattern..
-#     - Final solution/product would be integrated to the app...
-#     - why smart phone
-
-# """)
 
 ### BEHIND THE SCENCES ###
 st.markdown("---")
-st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>BEHIND THE SCENES</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>MODEL</h1>", unsafe_allow_html=True)
 
 st.markdown(
 """
-### Fall Detection Process Flow
-1. Sensor Data is sent to Deep Learning [DL] Model
-2. DL Model predicts: Fall / No Fall
-3. In case of fall: Selected User are getting a notification on their smartphone
+### Deep learning model
+
+Optimal model : Long-Short Term Memory
+
+- Can process entire sequences of data and appropriate for time series
+- Suggested by researchers
+- Tested best in the evaluation stage
+
+### Challenges and decisions?
+- data preprocessing
+- true positives/false negatives trade-off
+
+### Results
 
 
-- How does this work?
-    - Using accelerometer data to identify falling pattern
-    - we used deep learning model .. to train and test our approach
-        - what is a deep learning model
-        - what model did we use (LSTM)
-        - why LSTM
-        - what results did we get
-
-    - what were our main challenges?
-        1. data preprocessing
-        - insert image EDA
-        - show data sample
-        2. true positives/false negatives trade-off
-
-
-""")
-
-### PRODUCT ###
-st.markdown("---")
-st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>PRODUCT</h1>", unsafe_allow_html=True)
-st.markdown(
-
-"""
-
-Our product is a powerful deep learning model, that has X accuracy in detecting an event of fall, using input form the sensor data.
-    - Augmented data hub
-    - Detecting physical activities through smartphones
-""")
+### How it works?
 
 
 
-### BEIND THE SCENCES ###
-st.markdown("---")
-st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>BEHIND THE SCENCES</h1>", unsafe_allow_html=True)
-
-st.markdown(
-"""
-### Fall Detection Process Flow
-1. Sensor Data is sent to Deep Learning [DL] Model
-2. DL Model predicts: Fall / No Fall
-3. In case of fall: Selected User are getting a notification on their smartphone
 """)
 
 #################################### START CHART #####################################
@@ -244,49 +206,167 @@ fig = alt.layer(
 
 line_chart = st.altair_chart(fig)
 
-st.write('Status:')
-progress_bar = st.progress(0)
+
+col1_header, col2_header, col3_header = st.beta_columns(3)
+with col1_header:
+    st.subheader("**What the accelerometer measures:**")
+with col2_header:
+    st.subheader("**What the user is doing:**")
+with col3_header:
+    st.subheader("**What our model predicts:**")
+
+col1_display, col2_display, col3_display = st.beta_columns(3)
+with col1_display:
+    col1_display = st.empty()
+with col2_display:
+    col2_display = st.empty()
+with col3_display:
+    col3_display = st.empty()
+
+col1_display1, col2_display1, col3_display1 = st.beta_columns(3)
+with col1_display1:
+    col1_display1 = st.empty()
+with col2_display1:
+    col2_display1 = st.empty()
+with col3_display1:
+    col3_display1 = st.empty()
+
+col1_display2, col2_display2, col3_display2 = st.beta_columns(3)
+with col1_display2:
+    col1_display2 = st.empty()
+with col2_display2:
+    col2_display2 = st.empty()
+with col3_display2:
+    col3_display2 = st.empty()
+
+
+# Load Icons to display in animation
+downstairs = Image.open('icons/stairs_down.png')
+upstairs = Image.open('icons/stairs_up.png')
+cycling = Image.open('icons/cycling.png')
+falling = Image.open('icons/fall.png')
+check = Image.open('icons/check.png')
+warning = Image.open('icons/warning.png')
+
+
+# st.write('Status:')
+# progress_bar = st.progress(0)
 activity_text = st.empty()
 st.text("")
 #Append more random data to the chart using add_rows
 def animate():
-    for i in range(1, 50):
+    for i in range(1, 52):
 
         # Update progress bar.
-        progress_bar.progress(i + 4)
+        # progress_bar.progress(i + 48)
 
         # Mask, values between previous timestamp and next timestamp (+1 second)
         mask = (df['x_values_cum'] >= counter) & (df['x_values_cum'] < counter + i)
         # mask = df['x_values_cum'] <= time_stamp
         line_chart.add_rows(df[mask])
 
-        # Update status text.
-        activity_text.markdown(f"<h2 style='text-align: left; color: white; text-shadow: 1.5px 1.5px #003571;padding:0'>Activity: {df[mask]['activity_name_map'].tail(1).iloc[0]}</h1>", unsafe_allow_html=True)
+        acc_x_data = df[mask]['acc_x'].tail(1).iloc[0]
+        acc_y_data = df[mask]['acc_y'].tail(1).iloc[0]
+        acc_z_data = df[mask]['acc_z'].tail(1).iloc[0]
+
+        activity = df[mask]['activity_name_map'].tail(1).iloc[0]
+        prediction = df[mask]['prediction'].tail(1).iloc[0]
+
+        # Update Sensor Data
+        col1_display.markdown(f"x-axis: {acc_x_data}")
+
+        # Update activity
+        col2_display.markdown(f"{activity}")
+
+        # Update Sensor Data
+        col3_display.markdown(f"{prediction}")
+
+
+        ### ROW 1 ###
+        # Update Sensor Data
+        col1_display1.markdown(f"y-axis: {acc_y_data}")
+
+
+        ### ROW 2 ###
+        col1_display2.markdown(f"z-axis: {acc_z_data}")
+
+        # Function to disc
+        def display_icon_activity(activity, columnnumber):
+            if activity == 'upstairs':
+                activity = upstairs
+            if activity == 'downstairs':
+                activity = downstairs
+            if activity == 'cycling':
+                activity = cycling
+            if activity == 'falling':
+                activity = falling
+            if activity == 'fall':
+                activity = warning
+            if activity == 'no fall':
+                activity = check
+            if columnnumber == 2:
+                icon = col2_display1.image(activity,
+                                use_column_width=False,
+                                unsafe_allow_html=True,
+                                width=25,
+                                height=25)
+            if columnnumber == 3:
+                icon = col3_display1.image(activity,
+                                use_column_width=False,
+                                unsafe_allow_html=True,
+                                width=25,
+                                height=25)
+            return icon
+
+        if activity == 'Climbing Stairs':
+            display_icon_activity('upstairs',2)
+        if activity == 'Going Down Stairs':
+            display_icon_activity('downstairs',2)
+        if activity == 'Cycling':
+            display_icon_activity('cycling',2)
+        if activity == 'Falling':
+            display_icon_activity('falling',2)
+        if prediction == 'FALL':
+            display_icon_activity('fall',3)
+            col3_display2.markdown('<span style="color:red">Notfication sent!</span>',unsafe_allow_html=True)
+        if prediction == 'No Fall':
+            display_icon_activity('no fall',3)
 
         # Refresh for x-amount of seconds
-        time.sleep(0.3)
-
-    st.balloons()
+        time.sleep(0.5)
 
 
 # Button
 if st.button('Run Prediction 👩‍💻'):
-    st.balloons()
     animate()
 
-#################################### END CHART #####################################
+#################################### END CHART ###################
 
 
-### EXAMPLE DATA ###
+### PRODUCT ###
 st.markdown("---")
-st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>EXAMPLE DATA</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>DEPLOYMENT</h1>", unsafe_allow_html=True)
 
-# Display Dataframe
-df_display = pd.read_excel('fallguys/data/demo_data.xlsx')
-df_display_demo = df_display[["acc_x","acc_y","acc_z","activity_name"]].copy()
-df_display_demo = df_display_demo.loc[0:30,:]
-df = pd.DataFrame(df_display_demo)
-st.dataframe(df)
+st.markdown(
+
+"""
+
+Our product is a powerful deep learning model, that has X accuracy in detecting an event of fall, using input form the sensor data.
+- API
+- mobile application
+""")
+
+
+# ### EXAMPLE DATA ###
+# st.markdown("---")
+# st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>EXAMPLE DATA</h1>", unsafe_allow_html=True)
+
+# # Display Dataframe
+# df_display = pd.read_excel('fallguys/data/demo_data.xlsx')
+# df_display_demo = df_display[["acc_x","acc_y","acc_z","activity_name"]].copy()
+# df_display_demo = df_display_demo.loc[0:30,:]
+# df = pd.DataFrame(df_display_demo)
+# st.dataframe(df)
 
 
 ### FAQ ###
