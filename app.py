@@ -76,30 +76,20 @@ st.markdown(
 - Fall can be a critical problem for the elderly social group.
 - If the fall remains unnoticed, it can have significant impact on the health and lifestyle of the person.
 - It’s a widespread problem with global elderly population rising due to declining fertility rate and increased longevity.
-    - 23.3% of Japan’s population is over 65
     - Up to 50% of nursing home residents suffer from falls every year
     - 23% patients older than 65 suffer a trauma related-death after a fall
 
 """)
 #IMAGE/
-
-charts = 'images/image1.png'
-st.image(charts,
-        width=750,
-        unsafe_allow_html=True,
-        )
-
-charts1 = 'images/image2.png'
+charts1 = 'images/image2.png' #current situation
 st.image(charts1,
-        width=750,
+        width=500,
         unsafe_allow_html=True,
         )
-
-charts2 = 'images/image3.png'
-st.image(charts2,
-        width=750,
-        unsafe_allow_html=True,
-        )
+st.markdown(
+"""
+23.3% of Japan’s population is over 65
+""") #center this
 
 
 ### OUR SOLUTION ###
@@ -109,17 +99,18 @@ st.markdown(
     """
     We created a powerful algorithm that can identify and distinguish an event of fall among other activities of the user.
     """)
+st.markdown(
+    """
+    The aim is for the algorithm to continuosly track our users' every day activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
+    """)
 
 process = 'images/process.png'
 st.image(process,
         use_column_width=True,
         unsafe_allow_html=True,
         )
-st.markdown(
-    """
-    The aim is for the algorithm to continuosly track our users' every day activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
-    """)
-### ZETEOH ###
+
+### DATA ###
 st.markdown("---")
 st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>DATA</h1>", unsafe_allow_html=True)
 st.markdown(
@@ -135,7 +126,7 @@ st.markdown("<a style='color: white' href='https://www.zeteoh.com/'>Website: zet
 
 acceler = 'images/acceler2.png'
 st.image(acceler,
-        use_column_width=True,
+        width=700,
         unsafe_allow_html=True,
         )
 st.markdown(
@@ -399,46 +390,64 @@ with st.beta_expander("Q : What is your accuracy on detecting fall pattern?"):
 with st.beta_expander("Q : Can your algorithm know the different between the user falling and the phone falling?"):
     st.write("""
         Currently, no. The reason is that we have only user fall data to deveop an algorithm on.
-        To do so, we need the data of the phone falling data to feed to our algorithm so that it can differenciate
+        To do so, we need the data of the phone falling to feed to our algorithm so that it can differenciate
         between the user falling and phone falling.
     """)
+
 
 ### ABOUT US ###
 st.markdown("---")
 st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>ABOUT US</h1>", unsafe_allow_html=True)
-st.markdown(
-"""
-### Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-Team Members:""")
-st.markdown(
-"""
-- Miri
-    - I am cool cat lady
-    - Connect with me here
-""")
-miri_image = Image.open('images/miri.jpg')
-st.image(miri_image,
-        width=300,
-        unsafe_allow_html=True,
-        )
-st.markdown(
-"""
-- Jin
-    - I fall for you.
-    - Connect with me here
-""")
-jin_image = Image.open('images/jin.jpg')
-st.image(jin_image,
-        width=200,
-        unsafe_allow_html=True,
-        )
-st.markdown(
-"""
-- Sven
-    - I am cool dude
-    - Connect with me here
-""")
-
-code = '''def thank_you():
-   print("Thank you for visiting us!")'''
-st.code(code, language='python')
+# Setting up card template
+def contact_card(
+    name="Name",
+    title="Python Expert",
+    photo_url="https://filmshotfreezer.files.wordpress.com/2011/07/untitled-1.jpg",
+    banner_url="https://snap-photos.s3.amazonaws.com/img-thumbs/960w/RQ2Z75PQIN.jpg",
+    contact_url="",
+    description=""
+    ):
+    return f"""
+        <div class="card">
+            <div class="photo" style="background-image: url({photo_url});"></div>
+            <div class="banner" style="background-image: url({banner_url});"></div>
+            <ul>
+                <li><b>{name}</b></li>
+                <li>{title}</li>
+            </ul>
+            <a href="{contact_url}" target="_blank">
+                <button class="contact" id="main-button">click to get in touch</button>
+            </a>
+            <div class="description">{description}</div>
+        </div>"""
+# Information for the team. Please use photos hosted externally, e.g. google drive
+# Convert google drive link to useable link:
+# https://stackoverflow.com/questions/10311092/displaying-files-e-g-images-stored-in-google-drive-on-a-website
+team = [
+    {
+        "name": "Jin Khokasai",
+        "title": "Python Expert",
+        "description": "“I don't know why it working”",
+        "photo_url": "https://drive.google.com/uc?export=view&id=1YFOd_5XyN6LHFytORIuMwidBSFUq8wGQ",
+        "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
+        "contact_url": "https://www.google.com"
+    },
+    {
+        "name": "Miri Niko",
+        "title": "Survival Expert",
+        "description": "“180 days quarantine challenge”",
+        "photo_url": "https://drive.google.com/uc?export=view&id=1d_DFuSR4BkG4pgEeL_kcLtBvTUsGQ5xc",
+        "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
+        "contact_url": "https://www.google.com"
+    },
+    {
+        "name": "Sven Bosau",
+        "title": "Python Enthusiast",
+        "description": "“Life is short, use Python”",
+        "photo_url": "https://drive.google.com/uc?export=view&id=1tZhtkdr-VKPgEc7Oo_bUfSeh47CYDCRV",
+        "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
+        "contact_url": "https://www.google.com"
+    }
+]
+# Inserting the cards in the page
+st.markdown(f'<div class="cards">{"".join([contact_card(**member) for member in team])}</div>', unsafe_allow_html=True)
