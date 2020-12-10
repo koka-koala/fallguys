@@ -9,13 +9,6 @@ from google.oauth2 import service_account
 from fallguys.params import BUCKET_NAME, PROJECT_ID,\
     MODEL_NAME, MODEL_VERSION, BUCKET_X_DATA_PATH, BUCKET_y_DATA_PATH
 
-# PROJECT_ID = "wagon509-jin"
-# BUCKET_NAME = 'fall-guys-project'
-# MODEL_NAME = 'model'
-# MODEL_VERSION = 'model_1208_recall100_83'
-# BUCKET_X_DATA_PATH = 'data/X_test.npy'
-# BUCKET_y_DATA_PATH = 'data/y_test.npy'
-
 def get_credentials():
     credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
     if '.json' in credentials_raw:
@@ -34,9 +27,9 @@ def download_model(model_version=MODEL_VERSION, bucket=BUCKET_NAME, rm=True):
         model_version,
         "saved_model.pb")
     blob = client.blob(storage_location)
-    blob.download_to_filename('model')
+    blob.download_to_filename('model.pb')
     print(f"=> model downloaded from storage")
-    model = tf.keras.models.load_model('model')
+    model = tf.keras.models.load_model('model.pb')
     if rm:
         os.remove('model')
     return model
@@ -68,10 +61,3 @@ def download_ydata(data=BUCKET_y_DATA_PATH, bucket=BUCKET_NAME, rm=True):
     if rm:
         os.remove('y_test.npy')
     return y_data
-
-print("Start loading data X")
-X = download_Xdata()
-print(X.shape)
-print("Start loading data y")
-y = download_ydata()
-print(y.shape)
