@@ -86,7 +86,7 @@ charts1 = 'images/image2.png' #current situation
 st.image(charts1,
         width=500,
         unsafe_allow_html=True,
-        caption='Source: XXX'
+        caption='Source: https://voxeu.org/article/japan-s-age-wave-challenges-and-solutions'
         )
 st.markdown(
 """
@@ -425,14 +425,14 @@ def contact_card(
 team = [
     {
         "name": "Jin Khokasai",
-        "title": "Python Expert",
-        "description": "“I don't know why it working”",
+        "title": "Snake lover :) ",
+        "description": "“When all else fails... reboot”",
         "photo_url": "https://drive.google.com/uc?export=view&id=1YFOd_5XyN6LHFytORIuMwidBSFUq8wGQ",
         "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
-        "contact_url": "https://www.google.com"
+        "contact_url": "https://www.linkedin.com/in/jin-khokasai/"
     },
     {
-        "name": "Miri Niko",
+        "name": "Miri Nikolic",
         "title": "Survival Expert",
         "description": "“180 days quarantine challenge”",
         "photo_url": "https://drive.google.com/uc?export=view&id=1d_DFuSR4BkG4pgEeL_kcLtBvTUsGQ5xc",
