@@ -3,7 +3,21 @@ body {
     background-color: #24A0ED !important;
 
 }
+.streamlit-expanderHeader {
+  color: #fff;
+}
+.streamlit-expanderHeader:hover {
+  color: #003571;
+}
 
+.div stBlock{
+    color: #fff !important;   
+
+}
+.stImage>caption{
+    color: #fff !important;
+
+}
 .stButton>button {
     background-color:#5cfecc !important;
     color: #02356f;
@@ -12,9 +26,17 @@ body {
     font-weight: 900; 
 }
 
+.stButton>button:hover {
+    background-color:#5cfecc !important;
+    color: #24A0ED;
+    height: 3em;
+    width: 12em;
+    font-weight: 900; 
+}
+
 .fullScreenFrame > div {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
 }
 
 .reportview-container .main .block-container{{
@@ -47,6 +69,7 @@ a {
   -o-transition: all 0.7s ease-in-out;
   -ms-transition: all 0.7s ease-in-out;
 }
+
 
 .card:first-child {
   margin-left: 0;
