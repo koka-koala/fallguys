@@ -1,0 +1,18 @@
+body {
+    color: #fff;
+    background-color: #24A0ED !important;
+
+}
+
+.stButton>button {
+    background-color:#5cfecc !important;
+    color: #02356f;
+    height: 3em;
+    width: 12em;
+    font-weight: 900; 
+}
+
+.fullScreenFrame > div {
+    display: flex;
+    justify-content: center;
+}
