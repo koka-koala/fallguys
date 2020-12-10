@@ -81,10 +81,12 @@ st.markdown(
 
 """)
 #IMAGE/
+st.write('Chart Title')
 charts1 = 'images/image2.png' #current situation
 st.image(charts1,
         width=500,
         unsafe_allow_html=True,
+        caption='Source: XXX'
         )
 st.markdown(
 """
@@ -119,21 +121,23 @@ st.markdown(
 
 - Our solution relies on accelerometer sensor data, collected by smartphones.
 - Most smartphones contain built-in accelerometers and can support apps with its data.
-- We partnered with Zeteoh, a Japanese company that ... has a product that detects physical activities through smartphones
-""")
+- We partnered with <a style='color: white; text-decoration: underline' href='https://www.zeteoh.com/' target="_blank">Zeteoh</a>, a Japanese company that ... has a product that detects physical activities through smartphones
+""", unsafe_allow_html=True)
 
-st.markdown("<a style='color: white' href='https://www.zeteoh.com/'>Website: zeteoh</a>", unsafe_allow_html=True)
 
 acceler = 'images/acceler2.png'
-st.image(acceler,
-        width=700,
-        unsafe_allow_html=True,
-        )
-st.markdown(
 
-"""
-- X, Y and Z axes correspond to the motion of your phone in three-dimensional space.
-""")
+with st.beta_expander("How does Accelerometer Sensor look like?"):
+    st.image(acceler,
+            width=700,
+            unsafe_allow_html=True,
+            caption='X, Y and Z axes correspond to the motion of your phone in three-dimensional space.'
+            )
+    # st.markdown(
+    #
+    # """
+    # - X, Y and Z axes correspond to the motion of your phone in three-dimensional space.
+    # """)
 
 
 ### BEHIND THE SCENCES ###
@@ -154,13 +158,8 @@ Optimal model : Long-Short Term Memory
 - data preprocessing
 - true positives/false negatives trade-off
 
-### Results
 
-
-### How it works?
-
-
-
+### Visualization of Data Stream
 """)
 
 #################################### START CHART #####################################
@@ -173,7 +172,7 @@ y3 = df[mask]['acc_z']
 
 
 base = alt.Chart(df[mask]).properties(width=900, height=450).encode(alt.X('x_values_cum',axis=alt.Axis(title='Time in seconds')),
-                                                                    alt.Y('acc_x' + ':Q',axis=alt.Axis(title='Accelerometer')))
+                                                                    alt.Y('acc_x' + ':Q',axis=alt.Axis(title='Accelerometer'))).properties(title='')
 base.configure_legend(
     strokeColor='gray',
     fillColor='#EEEEEE',
@@ -328,7 +327,7 @@ def animate():
 
 
 # Button
-if st.button('Run Prediction 👩‍💻'):
+if st.button('Show Data Stream'):
     animate()
 
 #################################### END CHART ###################
@@ -364,12 +363,12 @@ Our product is a powerful deep learning model, that has X accuracy in detecting 
 st.markdown("---")
 st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>FAQ</h1>", unsafe_allow_html=True)
 
-with st.beta_expander("Q : What happened when someone fall?"):
+with st.beta_expander("Q : What happens when someone fall?"):
     st.write("""
         Good question! The system will send to notification to the register users.
     """)
 
-with st.beta_expander("Q : What happened when the user didn't fall but somehow the algorithm think they fell?"):
+with st.beta_expander("Q : What happens when the user did not fall but somehow the algorithm think they fell?"):
     st.write("""
         We plan to have a pop-up messsage to check if the user actually fall or not. If the user do not response in
         5 minutes the system will send the notification! Otherwise it will discard the notification.
@@ -442,7 +441,7 @@ team = [
     },
     {
         "name": "Sven Bosau",
-        "title": "Python Enthusiast",
+        "title": "Data Science Enthusiast",
         "description": "“Life is short, use Python”",
         "photo_url": "https://drive.google.com/uc?export=view&id=1tZhtkdr-VKPgEc7Oo_bUfSeh47CYDCRV",
         "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
