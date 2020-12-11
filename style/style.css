@@ -10,6 +10,30 @@ body {
   color: #003571;
 }
 
+.st-br {
+    background-color: rgb(255, 255, 255);
+}
+
+.css-2y0inq {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.2rem;
+    padding-bottom: 0.533333rem;
+    color: rgb(255, 255, 255);
+    top: -22px;
+    position: absolute;
+    white-space: nowrap;
+    background-color: transparent;
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+.css-145kmo2 {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
 .div stBlock{
     color: #fff !important;
 
