@@ -137,8 +137,8 @@ with st.beta_container():
     ))
 
     fig.update_layout(
-        width=800,
-        height=500,
+        width=650,
+        height=300,
         margin=dict(
                 l=0, #left margin
                 r=0, #right margin
