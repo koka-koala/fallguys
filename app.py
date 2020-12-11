@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 # Background Blue: #24A0ED
 # Lighter Blue: #a7d9f7
 # Darker Blue: #003571
-
+# add
 
 #####################
 ### PAGE SETTINGS ###
@@ -261,7 +261,7 @@ with st.beta_container():
     y3 = df[mask]['acc_z']
 
 
-    base = alt.Chart(df[mask]).properties(width=600, height=300).encode(alt.X('x_values_cum',axis=alt.Axis(title='Time in seconds')),
+    base = alt.Chart(df[mask]).properties(width=825, height=300).encode(alt.X('x_values_cum',axis=alt.Axis(title='Time in seconds')),
                                                                         alt.Y('acc_x' + ':Q',axis=alt.Axis(title='Accelerometer'))).properties(title='')
     base.configure_legend(
         strokeColor='gray',
@@ -441,46 +441,6 @@ with st.beta_container():
             )
 
 
-### FAQ ###
-st.markdown("---")
-with st.beta_container():
-    st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>FAQs</h1>", unsafe_allow_html=True)
-
-    with st.beta_expander("Q : What happens when someone falls?"):
-        st.write("""
-            Good question! Our model traces users' everyday activities and can tell if that someone fell. In that case,
-            a notification can be send to a dedicated contact to request assistance.
-        """)
-
-    with st.beta_expander("Q : What happens when the user did not fall but somehow the algorithm think they fell?"):
-        st.write("""
-            We plan to have a pop-up messsage to check if the user actually fell or not. If the user does not respond in
-            e.g. 5 minutes the system will send the notification! Otherwise it will discard the notification.
-        """)
-
-    with st.beta_expander("Q : What kind of model did you use to develop the algorithm?"):
-        st.write("""
-            Maybe you miss the part above, We use RNN (Recurring Neuron Network) - LSTM (Long Short Term Memory)
-            to develop the algorithm.
-        """)
-
-    with st.beta_expander("Q : What is your accuracy on detecting fall pattern?"):
-        st.write("""
-            One of the most challenging things in deep learning is lack of data. This was also one of our
-            obstacles in this project. With our limited data, our accuracy is 100 percent detecting actual fall data and 17 percent being false alarm.
-        """)
-
-    with st.beta_expander("Q : Can your algorithm know the difference between the user falling and the phone falling?"):
-        st.write("""
-            Currently, no. This is because we only have user fall data to deveop the algorithm with.
-            To be able to detect phone falling, we need specific data to distinguish phones from users.
-        """)
-    with st.beta_expander("Q : What did you find challenging in this project?"):
-        st.write("""
-            We had limited time and limited data to work on. A bigger (dataset) is always better for model accuracy.
-        """)
-
-
 ### ABOUT US ###
 st.markdown("---")
 with st.beta_container():
@@ -538,3 +498,45 @@ with st.beta_container():
     ]
     # Inserting the cards in the page
     st.markdown(f'<div class="cards">{"".join([contact_card(**member) for member in team])}</div>', unsafe_allow_html=True)
+
+### FAQ ###
+st.markdown("---")
+with st.beta_container():
+    st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>FAQs</h1>", unsafe_allow_html=True)
+
+    with st.beta_expander("Q : What happens when someone falls?"):
+        st.write("""
+            Good question! Our model traces users' everyday activities and can tell if that someone fell. In that case,
+            a notification can be send to a dedicated contact to request assistance.
+        """)
+
+    with st.beta_expander("Q : What happens when the user did not fall but somehow the algorithm think they fell?"):
+        st.write("""
+            We plan to have a pop-up messsage to check if the user actually fell or not. If the user does not respond in
+            e.g. 5 minutes the system will send the notification! Otherwise it will discard the notification.
+        """)
+
+    with st.beta_expander("Q : What kind of model did you use to develop the algorithm?"):
+        st.write("""
+            Maybe you miss the part above, We use RNN (Recurring Neuron Network) - LSTM (Long Short Term Memory)
+            to develop the algorithm.
+        """)
+
+    with st.beta_expander("Q : What is your accuracy on detecting fall pattern?"):
+        st.write("""
+            One of the most challenging things in deep learning is lack of data. This was also one of our
+            obstacles in this project. With our limited data, our accuracy is 100 percent detecting actual fall data and 17 percent being false alarm.
+        """)
+
+    with st.beta_expander("Q : Can your algorithm know the difference between the user falling and the phone falling?"):
+        st.write("""
+            Currently, no. This is because we only have user fall data to deveop the algorithm with.
+            To be able to detect phone falling, we need specific data to distinguish phones from users.
+        """)
+    with st.beta_expander("Q : What did you find challenging in this project?"):
+        st.write("""
+            We had limited time and limited data to work on. A bigger (dataset) is always better for model accuracy.
+        """)
+
+
+
