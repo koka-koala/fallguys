@@ -168,7 +168,7 @@ with st.beta_container():
             gridwidth=0.2,
             gridcolor='white',
             tickvals=[-4000000, -2000000,0,2000000,4000000],
-            ticktext=["4M", "2M","0","2M","4M"]
+            ticktext=["4M", "2M","0","2M","4M"],
         ),
         legend=dict(
             x=0,
