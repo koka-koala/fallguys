@@ -63,7 +63,7 @@ def load_data_population():
     df = pd.read_excel('fallguys/data/Japan-1950-2020.xlsx')
     return df
 
-df = load_data_population()
+df_pop = load_data_population()
 
 ####################
 ### PAGE LAYOUT ####
@@ -106,12 +106,12 @@ with st.beta_container():
 
     year = st.slider('Select Year:', 1950, 2020)
     st.text("")
-    mask = df['Year'] == year
+    mask = df_pop['Year'] == year
 
-    y = df[mask]['Age']
-    x1 = df[mask]['M']
-    x2_label = df[mask]['F']
-    x2 = df[mask]['F'] * -1
+    y = df_pop[mask]['Age']
+    x1 = df_pop[mask]['M']
+    x2_label = df_pop[mask]['F']
+    x2 = df_pop[mask]['F'] * -1
 
     fig = go.Figure()
     fig.add_trace(go.Bar(
