@@ -11,7 +11,7 @@ body {
 }
 
 .div stBlock{
-    color: #fff !important;   
+    color: #fff !important;
 
 }
 .stImage>caption{
@@ -23,7 +23,7 @@ body {
     color: #02356f;
     height: 3em;
     width: 12em;
-    font-weight: 900; 
+    font-weight: 900;
 }
 
 .stButton>button:hover {
@@ -31,7 +31,7 @@ body {
     color: #24A0ED;
     height: 3em;
     width: 12em;
-    font-weight: 900; 
+    font-weight: 900;
 }
 
 .fullScreenFrame > div {
@@ -194,4 +194,12 @@ button.contact:focus {
 .description {
   padding: 1em;
   text-align: center;
+}
+
+.block-container>div>.stBlock,
+.block-container>div>[data-testid="stBlock"] {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
