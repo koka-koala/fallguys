@@ -129,6 +129,7 @@ with st.beta_container():
     acceler = 'images/acceler2.png'
     with st.beta_expander("How does Accelerometer Sensor look like?"):
         st.image(acceler,
+                use_column_width=True,
                 width=700,
                 unsafe_allow_html=True,
                 caption='X, Y and Z axes correspond to the motion of your phone in three-dimensional space.'
@@ -179,8 +180,8 @@ with st.beta_container():
     )
 
     # Chart Style
-    line_x_color = '#fd1916' # red
-    line_y_color = '#24af93' # green
+    line_x_color = '#DC143C' # red
+    line_y_color = '#17705e' # green
     line_z_color = '#003571' # blue
     line_width = 2
 
@@ -260,7 +261,7 @@ with st.beta_container():
             prediction = df[mask]['prediction'].tail(1).iloc[0]
 
             # Update Sensor Data
-            col1_display.markdown(f"x-axis: {acc_x_data}")
+            col1_display.markdown(f"<font color={line_x_color}>x-axis: {acc_x_data}</font>",unsafe_allow_html=True)
 
             # Update activity
             col2_display.markdown(f"{activity}")
@@ -271,11 +272,11 @@ with st.beta_container():
 
             ### ROW 1 ###
             # Update Sensor Data
-            col1_display1.markdown(f"y-axis: {acc_y_data}")
+            col1_display1.markdown(f"<font color={line_y_color}>y-axis: {acc_y_data}</font>",unsafe_allow_html=True)
 
 
             ### ROW 2 ###
-            col1_display2.markdown(f"z-axis: {acc_z_data}")
+            col1_display2.markdown(f"<font color={line_z_color}>z-axis: {acc_z_data}</font>",unsafe_allow_html=True)
 
             # Function to disc
             def display_icon_activity(activity, columnnumber):
@@ -315,12 +316,12 @@ with st.beta_container():
                 display_icon_activity('falling',2)
             if prediction == 'FALL':
                 display_icon_activity('fall',3)
-                col3_display2.markdown('<span style="color:red">Notfication sent!</span>',unsafe_allow_html=True)
+                col3_display2.markdown('<span style="color:#DC143C;font-weight: bold;">Notfication sent!</span>',unsafe_allow_html=True)
             if prediction == 'No Fall':
                 display_icon_activity('no fall',3)
 
             # Refresh for x-amount of seconds
-            time.sleep(0.5)
+            time.sleep(0.3)
 
 
     # Button
@@ -429,7 +430,7 @@ with st.beta_container():
             "description": "“180 days quarantine challenge”",
             "photo_url": "https://drive.google.com/uc?export=view&id=1d_DFuSR4BkG4pgEeL_kcLtBvTUsGQ5xc",
             "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
-            "contact_url": "https://www.google.com"
+            "contact_url": "https://www.linkedin.com/in/mirnikolic/"
         },
         {
             "name": "Sven Bosau",
@@ -437,7 +438,7 @@ with st.beta_container():
             "description": "“Life is short, use Python”",
             "photo_url": "https://drive.google.com/uc?export=view&id=1tZhtkdr-VKPgEc7Oo_bUfSeh47CYDCRV",
             "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
-            "contact_url": "https://www.google.com"
+            "contact_url": "https://www.linkedin.com/in/sven-bosau-092837201/"
         }
     ]
     # Inserting the cards in the page
