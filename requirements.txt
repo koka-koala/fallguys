@@ -13,3 +13,4 @@ streamlit
 matplotlib
 altair
 xlrd
+plotly
