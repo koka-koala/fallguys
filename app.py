@@ -339,10 +339,13 @@ with st.beta_container():
 
     """
 
-    Our product is a powerful deep learning model, that has X accuracy in detecting an event of fall, using input form the sensor data.
-    - API
-    - mobile application
+    Our product is a powerful deep learning model, that has high accuracy in detecting an event of fall, using input from the sensor data.
     """)
+    image_deploy = Image.open('images/deploy.png')
+    st.image(image_deploy,
+            width=500,
+            unsafe_allow_html=True,
+            )
 
 
 ### FAQ ###
@@ -429,7 +432,7 @@ with st.beta_container():
             "description": "“180 days quarantine challenge”",
             "photo_url": "https://drive.google.com/uc?export=view&id=1d_DFuSR4BkG4pgEeL_kcLtBvTUsGQ5xc",
             "banner_url": "https://drive.google.com/uc?export=view&id=1DCM6WGnNrSVnEBNJs0VzC9PfkbH7CIxK",
-            "contact_url": "https://www.google.com"
+            "contact_url": "https://www.linkedin.com/in/mirnikolic/"
         },
         {
             "name": "Sven Bosau",
