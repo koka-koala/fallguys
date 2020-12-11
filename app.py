@@ -261,7 +261,7 @@ with st.beta_container():
     y3 = df[mask]['acc_z']
 
 
-    base = alt.Chart(df[mask]).properties(width=600, height=300).encode(alt.X('x_values_cum',axis=alt.Axis(title='Time in seconds')),
+    base = alt.Chart(df[mask]).properties(width=825, height=300).encode(alt.X('x_values_cum',axis=alt.Axis(title='Time in seconds')),
                                                                         alt.Y('acc_x' + ':Q',axis=alt.Axis(title='Accelerometer'))).properties(title='')
     base.configure_legend(
         strokeColor='gray',
