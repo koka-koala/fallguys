@@ -78,11 +78,11 @@ with st.beta_container():
     st.markdown(
     """
     ###
-    - Fall can be a critical problem for the elderly social group.
+    - Fall can be a critical problem for the elderly demographic group.
     - If the fall remains unnoticed, it can have significant impact on the health and lifestyle of the person.
-    - It’s a widespread problem with global elderly population rising due to declining fertility rate and increased longevity.
+    - It’s a widespread problem with global elderly population rising due to a declining fertility rate and increased longevity.
         - Up to 50% of nursing home residents suffer from falls every year
-        - 23% patients older than 65 suffer a trauma related-death after a fall
+        - 23% patients older than 65 suffer a trauma-related death after a fall
         - 23.3% of Japan’s population is over 65
 
     """)
@@ -106,7 +106,7 @@ with st.beta_container():
         """)
     st.markdown(
         """
-        The aim is for the algorithm to continuosly track our users' every day activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
+        The aim for the algorithm is to continuosly track our users' every day activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
         """)
 
     process = 'images/process.png'
@@ -122,12 +122,14 @@ with st.beta_container():
     st.markdown(
     """
     - Our solution relies on accelerometer sensor data, collected by smartphones.
-    - Most smartphones contain built-in accelerometers and can support apps with its data.
-    - We partnered with <a style='color: white; text-decoration: underline' href='https://www.zeteoh.com/' target="_blank">Zeteoh</a>, a Japanese company that has a product that detects physical activities through smartphones
+    - Most smartphones contain built-in accelerometers and can support apps that use its data.
+    - We partnered with <a style='color: white; text-decoration: underline' href='https://www.zeteoh.com/' target="_blank">Zeteoh</a>,
+    a Japanese company that deploys deep learning models on small devices.
+    - One of their products focuses on detecting physical activities on smartphone for gaming, insurance and healthcare industries.
     """, unsafe_allow_html=True)
 
     acceler = 'images/acceler2.png'
-    with st.beta_expander("How does Accelerometer Sensor look like?"):
+    with st.beta_expander("How does Accelerometer Sensor data look like?"):
         st.image(acceler,
                 use_column_width=True,
                 width=700,
@@ -143,19 +145,16 @@ with st.beta_container():
 
     st.markdown(
     """
-    ### Deep learning model
+    ### Model : Deep learning
 
-    Optimal model : Long-Short Term Memory
+    Type : Long-Short Term Memory (LSTM)
 
     - Can process entire sequences of data and appropriate for time series
     - Tested best in the evaluation stage
 
-    ### Challenges and decisions?
-    - data preprocessing
-    - limited dataset
-    - limited time (2 weeks)
-    - true positives/false negatives trade-off
+    Metrics/Result detecting fall event → Fall 100% : Others 17%
 
+    Challenge : Limited dataset
 
     ### Visualization of Data Stream
     """)
@@ -339,8 +338,8 @@ with st.beta_container():
     st.markdown(
 
     """
-
-    Our product is a powerful deep learning model, that has high accuracy in detecting an event of fall, using input from the sensor data.
+    Our model was designed to work best on smartphones, but can also be adapted and integrated to other
+    environments that can provide accelerometer sensor data input.
     """)
     image_deploy = Image.open('images/deploy.png')
     st.image(image_deploy,
@@ -354,38 +353,38 @@ st.markdown("---")
 with st.beta_container():
     st.markdown("<h1 style='text-align: center; color: white; text-shadow: 1.5px 1.5px #003571'>FAQs</h1>", unsafe_allow_html=True)
 
-    with st.beta_expander("Q : What happens when someone fall?"):
+    with st.beta_expander("Q : What happens when someone falls?"):
         st.write("""
-            Good question! The system will send to notification to the register users.
+            Good question! Our model traces users' everyday activities and can tell if that someone fell. In that case,
+            a notification can be send to a dedicated contact to request assistance.
         """)
 
     with st.beta_expander("Q : What happens when the user did not fall but somehow the algorithm think they fell?"):
         st.write("""
-            We plan to have a pop-up messsage to check if the user actually fall or not. If the user do not response in
-            5 minutes the system will send the notification! Otherwise it will discard the notification.
+            We plan to have a pop-up messsage to check if the user actually fell or not. If the user does not respond in
+            e.g. 5 minutes the system will send the notification! Otherwise it will discard the notification.
         """)
 
     with st.beta_expander("Q : What kind of model did you use to develop the algorithm?"):
         st.write("""
-            Maybe you miss the part above about how our algorithm works but no worry! We use RNN - LSTM (Long Short Term Memory)
+            Maybe you miss the part above, We use RNN (Recurring Neuron Network) - LSTM (Long Short Term Memory)
             to develop the algorithm.
         """)
 
     with st.beta_expander("Q : What is your accuracy on detecting fall pattern?"):
         st.write("""
-            One of the most challenging thing in deep learning is lack of data. It is also one of our
-            obstacle in this project. With our limited data, our accuray is 100 percent on the fall data with 17 percent on false alarm.
+            One of the most challenging things in deep learning is lack of data. This was also one of our
+            obstacles in this project. With our limited data, our accuracy is 100 percent detecting actual fall data and 17 percent being false alarm.
         """)
 
-    with st.beta_expander("Q : Can your algorithm know the different between the user falling and the phone falling?"):
+    with st.beta_expander("Q : Can your algorithm know the difference between the user falling and the phone falling?"):
         st.write("""
-            Currently, no. The reason is that we have only user fall data to deveop an algorithm on.
-            To do so, we need the data of the phone falling to feed to our algorithm so that it can differenciate
-            between the user falling and phone falling.
+            Currently, no. This is because we only have user fall data to deveop the algorithm with.
+            To be able to detect phone falling, we need specific data to distinguish phones from users.
         """)
-    with st.beta_expander("Q : What do you find challenging in this project?"):
+    with st.beta_expander("Q : What did you find challenging in this project?"):
         st.write("""
-            First, we have limited time and data to work on.
+            We had limited time and limited data to work on. A bigger (dataset) is always better for model accuracy.
         """)
 
 
