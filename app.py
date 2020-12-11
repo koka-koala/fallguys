@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from pathlib import Path
 import altair as alt
+import plotly.graph_objects as go
 
 # COLORCODES
 # Background Blue: #24A0ED
@@ -57,6 +58,13 @@ def get_data():
 df = get_data()
 
 
+@st.cache
+def load_data_population():
+    df = pd.read_excel('fallguys/data/Japan-1950-2020.xlsx')
+    return df
+
+df = load_data_population()
+
 ####################
 ### PAGE LAYOUT ####
 ####################
@@ -83,18 +91,94 @@ with st.beta_container():
     - It’s a widespread problem with global elderly population rising due to a declining fertility rate and increased longevity.
         - Up to 50% of nursing home residents suffer from falls every year
         - 23% patients older than 65 suffer a trauma-related death after a fall
-        - 23.3% of Japan’s population is over 65
+        - 28.5% of Japan’s population is over 65 in 2020
 
     """)
-    #IMAGE/
-    st.write('Population of Japan by age and sex in 2015')
-    charts1 = 'images/image2.png' #current situation
-    st.image(charts1,
-            width=500,
-            unsafe_allow_html=True,
-            caption='Source: https://voxeu.org/article/japan-s-age-wave-challenges-and-solutions'
-            )
+    # #IMAGE/
+    # st.write('Population of Japan by age and sex in 2015')
+    # charts1 = 'images/image2.png' #current situation
+    # st.image(charts1,
+    #         width=500,
+    #         unsafe_allow_html=True,
+    #         caption='Source: https://voxeu.org/article/japan-s-age-wave-challenges-and-solutions'
+    #         )
 
+
+    year = st.slider('Select Year:', 1950, 2020)
+    st.text("")
+    mask = df['Year'] == year
+
+    y = df[mask]['Age']
+    x1 = df[mask]['M']
+    x2_label = df[mask]['F']
+    x2 = df[mask]['F'] * -1
+
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        y=y,
+        x=x1,
+        name='Male',
+        orientation='h',
+        marker=dict(
+            color='rgba(0, 53, 113, 0.6)',
+            line=dict(color='rgba(0, 53, 113, 1.0)', width=3)
+        )
+    ))
+    fig.add_trace(go.Bar(
+        y=y,
+        x=x2,
+        name='Female',
+        orientation='h',
+        marker=dict(
+            color='rgba(255, 100, 151, 0.6)',
+            line=dict(color='rgba(255, 100, 151, 1.0)', width=3)
+        )
+    ))
+
+    fig.update_layout(
+        width=800,
+        height=500,
+        margin=dict(
+                l=0, #left margin
+                r=0, #right margin
+                b=0, #bottom margin
+                t=40, #top margin
+            ),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title=f'<b>Population Pyramid Japan in {year}</b>',
+        font=dict(
+            color="white"
+            ),
+        xaxis_tickfont_size=14,
+        yaxis=dict(
+            title='Age Group',
+            titlefont_size=16,
+            tickfont_size=14,
+            showgrid=False,
+            gridwidth=0.2,
+            gridcolor='#d3d3d3',
+        ),
+        xaxis=dict(
+            title='Population in Mio',
+            titlefont_size=16,
+            tickfont_size=14,
+            showgrid=False,
+            gridwidth=0.2,
+            gridcolor='white',
+        ),
+        legend=dict(
+            x=0,
+            y=1.0,
+            bgcolor='rgba(255, 255, 255, 0)',
+            bordercolor='rgba(255, 255, 255, 0)'
+        ),
+        barmode='relative',
+        bargap=0.0, # gap between bars of adjacent location coordinates.
+        bargroupgap=0 # gap between bars of the same location coordinate.
+    )
+    st.plotly_chart(fig)
+    st.markdown('*Datasource: https://www.populationpyramid.net/japan/*')
 
 ### OUR SOLUTION ###
 st.markdown("---")
