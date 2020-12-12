@@ -225,10 +225,10 @@ button.contact:focus {
   text-align: center;
 }
 
-.block-container>div>.stBlock,
+/*.block-container>div>.stBlock,
 .block-container>div>[data-testid="stBlock"] {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+}*/
