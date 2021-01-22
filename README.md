@@ -1,3 +1,8 @@
+# Fall Detector (by us fall-guys)
+
+The aim of the algorithm is to continuously track our users' everyday activity, and in the case of a fall event, send a notification to a dedicated contact for immediate assistance.
+Partnered with Zeteoh, a Japanese company that deploys deep learning models on small devices
+
 # Data analysis
 - Document here the project: fallguys
 - Description: Project Description
